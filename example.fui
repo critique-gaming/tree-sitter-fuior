@@ -1,0 +1,60 @@
+# This is a comment. It's going to be ignored
+# Indentation is not mandatory, but makes things easier to read
+# Blank lines are also ignored. Use them to structure "paragraphs" however you wish
+
+# This describes what characters are going to be used for this scene
+load_characters jen tab
+
+# Shows Jen on the left side with her default nametag
+show jen LEFT
+
+# This is how you show a dialogue bubble. The animation in brackets is optional.
+# If needed, this waits for the user to read the previous bubble before showing the next bubble.
+jen: [smile] Hi, Tab!
+
+# Shows Tab on the right side with a custom nametag
+show tab RIGHT "Tab Thompson"
+
+tab: [smile] Hi, Jen!
+
+jen: [neutral] So, how's work?
+animate tab neutral # Run animations independently from dialogue bubbles
+
+# Conditional clause.
+# The else branch is optional
+# End your conditionals with "end"
+if tab_tired
+    # Example of dialogue bubble without animation (character stays on the previous animation)
+    tab: The usual...
+else
+    tab: Great!
+end
+
+# This is how you wait for a fixed amount of seconds, instead of waiting for the user to click
+wait 5
+
+tab: Say, what color would you pick for this dossier's color coding?
+
+# A choice! List the choices, one per line, starting with a "*".
+# List any applicable effects under each choice
+# End a choice list with an "end"
+choose
+* Yellow
+    set dossier_yellow
+    jen_approval +1
+
+    jen: [smile] Nice choice! I like Yellow
+    animate tab disgusted
+
+* Red
+    set dossier_red
+
+    tab: [smile] I love red! It's great!
+    animate jen sad
+end
+
+# At the end of the scene, wait for the the user to read the last dialogue bubble
+wait_for_click
+
+# After the user clicks, hide all characters, so that they leave as the scene fades out
+hide_all

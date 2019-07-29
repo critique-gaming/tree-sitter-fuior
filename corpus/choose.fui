@@ -1,0 +1,46 @@
+===
+Choose statement
+===
+
+choose
+* Option 1
+* Option 2
+* Option 3
+end
+
+choose
+* Option 1
+    jen: Picked 1
+* Option 2
+    jen: Picked 2
+* Option 3
+    jen: Picked 3
+end
+
+choose
+end
+
+---
+
+(source_file
+  (choose_statement
+    (choice (text_copy) (block))
+    (choice (text_copy) (block))
+    (choice (text_copy) (block))
+  )
+  (choose_statement
+    (choice
+      (text_copy)
+      (block
+        (show_text (text_actor) (text_copy))))
+    (choice
+      (text_copy)
+      (block
+        (show_text (text_actor) (text_copy))))
+    (choice
+      (text_copy)
+      (block
+        (show_text (text_actor) (text_copy))))
+  )
+  (ERROR)
+)

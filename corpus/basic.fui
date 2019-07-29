@@ -1,0 +1,30 @@
+===
+Basic syntax
+===
+
+# This is a comment. It's going to be ignored
+show jen LEFT "Jennifer Reyes"
+jen: [smile] Hi, Tab!
+tab: Hi, Jen!
+
+---
+
+(source_file
+  (comment)
+  (command
+    (command_verb)
+    (command_arg (bare_word))
+    (command_arg (bare_word))
+    (command_arg (string))
+  )
+  (show_text
+    (text_actor)
+    (text_animation)
+    (text_copy)
+  )
+  (show_text
+    (text_actor)
+    (text_copy)
+  )
+)
+

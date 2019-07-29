@@ -1,0 +1,71 @@
+===
+Conditionals
+===
+
+if condition
+  verb if_branch
+end
+
+if condition
+  verb if_branch
+else
+  verb else_branch
+end
+
+if condition
+  verb if_branch
+elseif condition2
+  verb elseif_branch
+end
+
+if condition
+  verb if_branch
+elseif condition2
+  verb elseif_branch
+else
+  verb else_branch
+end
+
+
+---
+
+(source_file
+  (if_statement
+    (expression (identifier))
+    (if_clause
+      (block (command (command_verb) (command_arg (bare_word))))
+    )
+  )
+  (if_statement
+    (expression (identifier))
+    (if_clause
+      (block (command (command_verb) (command_arg (bare_word))))
+    )
+    (else_clause
+      (block (command (command_verb) (command_arg (bare_word))))
+    )
+  )
+  (if_statement
+    (expression (identifier))
+    (if_clause
+      (block (command (command_verb) (command_arg (bare_word))))
+    )
+    (elseif_clause
+      (expression (identifier))
+      (block (command (command_verb) (command_arg (bare_word))))
+    )
+  )
+  (if_statement
+    (expression (identifier))
+    (if_clause
+      (block (command (command_verb) (command_arg (bare_word))))
+    )
+    (elseif_clause
+      (expression (identifier))
+      (block (command (command_verb) (command_arg (bare_word))))
+    )
+    (else_clause
+      (block (command (command_verb) (command_arg (bare_word))))
+    )
+  )
+)
