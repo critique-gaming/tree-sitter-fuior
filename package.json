@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-fuior",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Grammar for Fuior (narrative design DSL)",
   "main": "index.js",
   "scripts": {
