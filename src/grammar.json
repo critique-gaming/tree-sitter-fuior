@@ -33,6 +33,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "stat_operation"
+        },
+        {
+          "type": "SYMBOL",
           "name": "command"
         },
         {
@@ -161,6 +165,40 @@
         {
           "type": "SYMBOL",
           "name": "block"
+        }
+      ]
+    },
+    "stat_operation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "stat_operand"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
+    "stat_operand": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "STRING",
+          "value": "="
         }
       ]
     },
@@ -302,8 +340,21 @@
       "value": "[^\\r\\n]+"
     },
     "expression": {
-      "type": "SYMBOL",
-      "name": "identifier"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
     },
     "identifier": {
       "type": "PATTERN",

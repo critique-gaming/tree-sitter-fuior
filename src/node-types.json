@@ -22,6 +22,10 @@
         {
           "type": "show_text",
           "named": true
+        },
+        {
+          "type": "stat_operation",
+          "named": true
         }
       ]
     }
@@ -147,6 +151,14 @@
         {
           "type": "identifier",
           "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
         }
       ]
     }
@@ -239,6 +251,38 @@
         {
           "type": "show_text",
           "named": true
+        },
+        {
+          "type": "stat_operation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stat_operand",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "stat_operation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "stat_operand",
+          "named": true
         }
       ]
     }
@@ -269,6 +313,18 @@
   },
   {
     "type": "*",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {
