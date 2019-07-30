@@ -1,0 +1,27 @@
+===
+Stats
+===
+
+health +1
+health -1
+name = "Manny"
+
+---
+
+(source_file
+  (stat_operation
+    (identifier)
+    (stat_operand)
+    (expression (number))
+  )
+  (stat_operation
+    (identifier)
+    (stat_operand)
+    (expression (number))
+  )
+  (stat_operation
+    (identifier)
+    (stat_operand)
+    (expression (string))
+  )
+)

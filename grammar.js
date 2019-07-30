@@ -16,6 +16,7 @@ module.exports = grammar({
       $._endl,
       $.if_statement,
       $.choose_statement,
+      $.stat_operation,
       $.command,
       $.show_text,
     ),
@@ -46,6 +47,13 @@ module.exports = grammar({
       $.block,
     ),
 
+    stat_operation: $ => seq(
+      $.identifier,
+      $.stat_operand,
+      $.expression,
+    ),
+    stat_operand: $ => choice('+', '-', '='),
+
     block: $ => seq(
       $._endl,
       repeat($._statement),
@@ -74,7 +82,11 @@ module.exports = grammar({
     ),
     text_copy: $ => /[^\r\n]+/,
 
-    expression: $ => $.identifier,
+    expression: $ => choice(
+      $.identifier,
+      $.number,
+      $.string,
+    ),
 
     identifier: $ => /[a-z_][a-z0-9_]*/,
     number: $ => /[0-9]+(\.[0-9]+)?/,
