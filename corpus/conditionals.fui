@@ -31,13 +31,13 @@ end
 
 (source_file
   (if_statement
-    (expression (identifier))
+    (condition (identifier))
     (if_clause
       (block (command (command_verb) (command_arg (bare_word))))
     )
   )
   (if_statement
-    (expression (identifier))
+    (condition (identifier))
     (if_clause
       (block (command (command_verb) (command_arg (bare_word))))
     )
@@ -46,22 +46,22 @@ end
     )
   )
   (if_statement
-    (expression (identifier))
+    (condition (identifier))
     (if_clause
       (block (command (command_verb) (command_arg (bare_word))))
     )
     (elseif_clause
-      (expression (identifier))
+      (condition (identifier))
       (block (command (command_verb) (command_arg (bare_word))))
     )
   )
   (if_statement
-    (expression (identifier))
+    (condition (identifier))
     (if_clause
       (block (command (command_verb) (command_arg (bare_word))))
     )
     (elseif_clause
-      (expression (identifier))
+      (condition (identifier))
       (block (command (command_verb) (command_arg (bare_word))))
     )
     (else_clause

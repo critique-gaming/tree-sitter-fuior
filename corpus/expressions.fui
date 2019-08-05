@@ -1,0 +1,67 @@
+===
+Expressions
+===
+
+some_stat = some_other_stat
+some_stat = 1
+some_stat = 1.0
+some_stat = true
+some_stat = false
+some_stat = 1 + 2 * 3
+some_stat = a < 3 + 1 and b > 12 or c = 12
+
+---
+
+(source_file
+  (stat_operation
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue
+      (identifier)))
+  (stat_operation
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue
+      (number)))
+  (stat_operation
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue
+      (number)))
+  (stat_operation
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue
+      (boolean)))
+  (stat_operation
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue
+      (boolean)))
+  (stat_operation
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue
+      (binary_expression
+        (number)
+        (binary_expression
+          (number)
+          (number)))))
+  (stat_operation
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue
+      (binary_expression
+        (binary_expression
+          (binary_expression
+            (identifier)
+            (binary_expression
+              (number)
+              (number)))
+          (binary_expression
+            (identifier)
+            (number)))
+        (binary_expression
+          (identifier)
+          (number)))))
+)

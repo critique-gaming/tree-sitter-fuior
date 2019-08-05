@@ -10,18 +10,18 @@ name = "Manny"
 
 (source_file
   (stat_operation
-    (identifier)
-    (stat_operand)
-    (expression (number))
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue (number))
   )
   (stat_operation
-    (identifier)
-    (stat_operand)
-    (expression (number))
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue (number))
   )
   (stat_operation
-    (identifier)
-    (stat_operand)
-    (expression (string))
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue (string))
   )
 )
