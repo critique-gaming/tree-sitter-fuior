@@ -15,8 +15,7 @@
     "url": "git+https://github.com/dapetcu21/tree-sitter-fuior.git"
   },
   "author": "Marius Petcu",
-  "license": "UNLICENSED",
-  "private": true,
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/dapetcu21/tree-sitter-fuior/issues"
   },
