@@ -363,7 +363,7 @@
     },
     "text_copy": {
       "type": "PATTERN",
-      "value": "[^\\r\\n]+"
+      "value": "[^\\r\\n\\s][^\\r\\n]*[^\\r\\n\\s]|[^\\r\\n\\s]"
     },
     "_expression": {
       "type": "CHOICE",
