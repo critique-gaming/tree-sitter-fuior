@@ -82,7 +82,7 @@ module.exports = grammar({
       ),
       $._endl
     ),
-    text_copy: $ => /[^\r\n]+/,
+    text_copy: $ => /[^\r\n\s][^\r\n]*[^\r\n\s]|[^\r\n\s]/,
 
     _expression: $ => choice(
       $.identifier,
