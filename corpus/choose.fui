@@ -18,6 +18,12 @@ choose
 end
 
 choose
+* [stat > 1] Option 1
+* Option 2
+* Option 3
+end
+
+choose
 end
 
 ---
@@ -41,6 +47,11 @@ end
       (text_copy)
       (block
         (show_text (text_actor) (text_copy))))
+  )
+  (choose_statement
+    (choice (choice_condition (binary_expression (identifier) (number))) (text_copy) (block))
+    (choice (text_copy) (block))
+    (choice (text_copy) (block))
   )
   (ERROR)
 )

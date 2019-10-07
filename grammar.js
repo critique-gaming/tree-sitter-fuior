@@ -44,9 +44,13 @@ module.exports = grammar({
     ),
     choice: $ => seq(
       '*',
-      $.text_copy,
+      choice(
+        seq(token(prec(2, '[')), $.choice_condition, ']', $.text_copy),
+        $.text_copy,
+      ),
       $.block,
     ),
+    choice_condition: $ => $._expression,
 
     stat_operation: $ => seq(
       alias($.identifier, $.stat_lvalue),
