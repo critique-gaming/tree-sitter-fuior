@@ -163,14 +163,51 @@
           "value": "*"
         },
         {
-          "type": "SYMBOL",
-          "name": "text_copy"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "TOKEN",
+                  "content": {
+                    "type": "PREC",
+                    "value": 2,
+                    "content": {
+                      "type": "STRING",
+                      "value": "["
+                    }
+                  }
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "choice_condition"
+                },
+                {
+                  "type": "STRING",
+                  "value": "]"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "text_copy"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "text_copy"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
           "name": "block"
         }
       ]
+    },
+    "choice_condition": {
+      "type": "SYMBOL",
+      "name": "_expression"
     },
     "stat_operation": {
       "type": "SEQ",
