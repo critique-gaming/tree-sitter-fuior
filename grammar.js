@@ -71,7 +71,7 @@ module.exports = grammar({
       $._endl,
     ),
     command_arg: $ => choice(
-      $._constant,
+      $._literal,
       $.bare_word,
       seq('{', $._expression, '}'),
     ),
@@ -90,13 +90,13 @@ module.exports = grammar({
 
     _expression: $ => choice(
       $.identifier,
-      $._constant,
+      $._literal,
       $.unary_expression,
       $.binary_expression,
       $.paran_expression,
     ),
 
-    _constant: $ => choice(
+    _literal: $ => choice(
       $.number,
       $.intl_string,
       $.string,
