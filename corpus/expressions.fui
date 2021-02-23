@@ -9,6 +9,7 @@ some_stat = true
 some_stat = false
 some_stat = 1 + 2 * 3
 some_stat = a < 3 + 1 and b > 12 or c = 12
+some_stat = (1 + 2) * 3
 
 ---
 
@@ -64,4 +65,14 @@ some_stat = a < 3 + 1 and b > 12 or c = 12
         (binary_expression
           (identifier)
           (number)))))
+  (stat_operation
+    (stat_lvalue)
+    (stat_operator)
+    (stat_rvalue
+      (binary_expression
+        (paran_expression
+          (binary_expression
+            (number)
+            (number)))
+        (number))))
 )
