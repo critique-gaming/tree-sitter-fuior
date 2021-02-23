@@ -3,7 +3,7 @@ Basic syntax
 ===
 
 # This is a comment. It's going to be ignored
-show jen LEFT "Jennifer Reyes"
+show jen LEFT "Jennifer Reyes" i"Intled string"
 jen: [smile] Hi, Tab!
 tab: Hi, Jen!
 
@@ -16,6 +16,7 @@ tab: Hi, Jen!
     (command_arg (bare_word))
     (command_arg (bare_word))
     (command_arg (string))
+    (command_arg (intl_string))
   )
   (show_text
     (text_actor)
