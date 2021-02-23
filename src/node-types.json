@@ -5,7 +5,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "binary_expression",
@@ -17,6 +17,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "intl_string",
           "named": true
         },
         {
@@ -80,7 +84,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block",
@@ -102,8 +106,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "binary_expression",
@@ -115,6 +119,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "intl_string",
           "named": true
         },
         {
@@ -142,7 +150,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "choice",
@@ -157,7 +165,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "command_arg",
@@ -175,8 +183,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "bare_word",
@@ -192,6 +200,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "intl_string",
           "named": true
         },
         {
@@ -218,8 +230,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "binary_expression",
@@ -231,6 +243,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "intl_string",
           "named": true
         },
         {
@@ -257,8 +273,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "block",
@@ -273,7 +289,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block",
@@ -291,8 +307,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "block",
@@ -307,7 +323,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "condition",
@@ -333,8 +349,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "binary_expression",
@@ -346,6 +362,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "intl_string",
           "named": true
         },
         {
@@ -373,7 +393,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "text_actor",
@@ -427,7 +447,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "stat_lvalue",
@@ -454,8 +474,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "binary_expression",
@@ -467,6 +487,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "intl_string",
           "named": true
         },
         {
@@ -493,8 +517,8 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
           "type": "binary_expression",
@@ -506,6 +530,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "intl_string",
           "named": true
         },
         {
@@ -528,107 +556,7 @@
     }
   },
   {
-    "type": "comment",
-    "named": true
-  },
-  {
-    "type": "if",
-    "named": false
-  },
-  {
-    "type": "end",
-    "named": false
-  },
-  {
-    "type": "elseif",
-    "named": false
-  },
-  {
-    "type": "else",
-    "named": false
-  },
-  {
-    "type": "choose",
-    "named": false
-  },
-  {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "[",
-    "named": false
-  },
-  {
-    "type": "]",
-    "named": false
-  },
-  {
-    "type": "+",
-    "named": false
-  },
-  {
-    "type": "-",
-    "named": false
-  },
-  {
-    "type": "=",
-    "named": false
-  },
-  {
-    "type": "{",
-    "named": false
-  },
-  {
-    "type": "}",
-    "named": false
-  },
-  {
-    "type": "bare_word",
-    "named": true
-  },
-  {
-    "type": ":",
-    "named": false
-  },
-  {
-    "type": "text_copy",
-    "named": true
-  },
-  {
-    "type": "not",
-    "named": false
-  },
-  {
-    "type": "/",
-    "named": false
-  },
-  {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": ">=",
-    "named": false
-  },
-  {
-    "type": "<=",
-    "named": false
-  },
-  {
     "type": "!=",
-    "named": false
-  },
-  {
-    "type": "and",
-    "named": false
-  },
-  {
-    "type": "or",
     "named": false
   },
   {
@@ -640,11 +568,115 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<=",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">=",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "bare_word",
+    "named": true
+  },
+  {
+    "type": "choose",
+    "named": false
+  },
+  {
+    "type": "command_verb",
+    "named": true
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "elseif",
+    "named": false
+  },
+  {
+    "type": "end",
+    "named": false
+  },
+  {
+    "type": "false",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "intl_string",
+    "named": true
+  },
+  {
+    "type": "not",
+    "named": false
+  },
+  {
     "type": "number",
+    "named": true
+  },
+  {
+    "type": "or",
+    "named": false
+  },
+  {
+    "type": "stat_lvalue",
     "named": true
   },
   {
@@ -652,11 +684,27 @@
     "named": true
   },
   {
+    "type": "text_actor",
+    "named": true
+  },
+  {
+    "type": "text_animation",
+    "named": true
+  },
+  {
+    "type": "text_copy",
+    "named": true
+  },
+  {
     "type": "true",
     "named": false
   },
   {
-    "type": "false",
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]
