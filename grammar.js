@@ -98,6 +98,7 @@ module.exports = grammar({
 
     _constant: $ => choice(
       $.number,
+      $.intl_string,
       $.string,
       $.boolean,
     ),
@@ -126,6 +127,7 @@ module.exports = grammar({
 
     identifier: $ => /[a-z_][a-z0-9_]*/,
     number: $ => /[0-9]+(\.[0-9]+)?/,
+    intl_string: $ => /i"[^"]*"/,
     string: $ => /"[^"]*"/,
     boolean: $ => choice('true', 'false'),
   }
