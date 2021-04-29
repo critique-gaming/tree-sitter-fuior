@@ -7,3 +7,5 @@ This repository hosts the parser for Fuior, written in [Tree-Sitter].
 Other Fuior repositories:
 * [the compiler (and Defold native extension)](https://github.com/critique-gaming/fuior).
 * [example Defold project](https://github.com/critique-gaming/fuior-example)
+
+[Tree-Sitter]: https://tree-sitter.github.io/tree-sitter/
