@@ -1,0 +1,48 @@
+===
+Command definition
+===
+
+command my_custom_command1(arg1: string, arg2: ?number, arg3: name1 | name2)
+  some_command
+end
+
+declare command my_custom_command2(): return_type
+
+declare command my_custom_command2(arg1)
+
+---
+
+(source_file
+  (define_command_statement
+    (command_signature
+      (command_name)
+      (arg_definition_list
+        (arg_definition (arg_name)
+          (arg_type (identifier))
+        )
+        (arg_definition (arg_name)
+          (arg_type (unary_type_expression (identifier)))
+        )
+        (arg_definition (arg_name)
+          (arg_type (binary_type_expression (identifier) (identifier)))
+        )
+      )
+    )
+    (block (command (command_verb)))
+  )
+  (declare_command_statement
+    (command_signature
+      (command_name)
+      (arg_definition_list)
+      (return_type (identifier))
+    )
+  )
+  (declare_command_statement
+    (command_signature
+      (command_name)
+      (arg_definition_list
+        (arg_definition (arg_name))
+      )
+    )
+  )
+)

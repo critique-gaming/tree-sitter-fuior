@@ -19,11 +19,13 @@ module.exports = grammar({
       $.stat_operation,
       $.command,
       $.show_text,
+      $.declare_command_statement,
+      $.define_command_statement,
     ),
 
     if_statement: $ => seq(
       'if',
-      $.condition,
+      field('condition', $.condition),
       $.if_clause,
       repeat($.elseif_clause),
       optional($.else_clause),
@@ -53,9 +55,9 @@ module.exports = grammar({
     choice_condition: $ => $._expression,
 
     stat_operation: $ => seq(
-      alias($.identifier, $.stat_lvalue),
-      $.stat_operator,
-      $.stat_rvalue,
+      field('lvalue', alias($.identifier, $.stat_lvalue)),
+      field('operator', $.stat_operator),
+      field('rvalue', $.stat_rvalue),
     ),
     stat_operator: $ => choice('+', '-', '='),
     stat_rvalue: $ => $._expression,
@@ -65,8 +67,58 @@ module.exports = grammar({
       repeat($._statement),
     ),
 
+    arg_definition: $ => seq(
+      field('name', alias($.identifier, $.arg_name)),
+      optional(
+        seq(
+          ':',
+          field('type', alias($._type_expression, $.arg_type)),
+        ),
+      ),
+    ),
+
+    arg_definition_list: $ => seq(
+      '(',
+      choice(
+        ')',
+        seq($.arg_definition,
+          choice(
+            ')',
+            seq(
+              repeat(seq(',', $.arg_definition)),
+              ')'
+            ),
+          ),
+        ),
+      ),
+    ),
+
+    command_signature: $ => seq(
+      field('name', alias($.identifier, $.command_name)),
+      field('arguments', $.arg_definition_list),
+      optional(seq(
+        ':',
+        field('return_type', alias($._type_expression, $.return_type))
+      ))
+    ),
+
+    declare_command_statement: $ => seq(
+      'declare',
+      'command',
+      field('signature', $.command_signature),
+      $._endl,
+    ),
+
+    define_command_statement: $ => seq(
+      'command',
+      field('signature', $.command_signature),
+      field('body', $.block),
+      'end',
+      $._endl,
+    ),
+
     command: $ => seq(
-      alias($.identifier, $.command_verb),
+      field('verb', alias($.identifier, $.command_verb)),
       repeat($.command_arg),
       $._endl,
     ),
@@ -78,15 +130,39 @@ module.exports = grammar({
     bare_word: $ => token(prec(-1, /[^\s]+/)),
 
     show_text: $ => seq(
-      alias($.identifier, $.text_actor),
+      field('actor', alias($.identifier, $.text_actor)),
       ':',
       choice(
-        seq(token(prec(2, '[')), alias($.identifier, $.text_animation), ']', $.text_copy),
-        $.text_copy,
+        seq(
+          token(prec(2, '[')),
+          field('animation', alias($.identifier, $.text_animation)),
+          ']',
+          field('copy', $.text_copy),
+        ),
+        field('copy', $.text_copy),
       ),
       $._endl
     ),
     text_copy: $ => /[^\r\n\s][^\r\n]*[^\r\n\s]|[^\r\n\s]/,
+
+    _type_expression: $ => choice(
+      $.identifier,
+      $.string,
+      $.binary_type_expression,
+      $.unary_type_expression,
+      $.paran_type_expression,
+    ),
+
+    unary_type_expression: $ => prec(10, choice(
+      seq('?', $._type_expression),
+    )),
+
+    binary_type_expression: $ => choice(
+      prec.left(5, seq($._type_expression, '|', $._type_expression)),
+      prec.left(5, seq($._type_expression, '&', $._type_expression)),
+    ),
+
+    paran_type_expression: $ => seq('(', $._type_expression, ')'),
 
     _expression: $ => choice(
       $.identifier,
