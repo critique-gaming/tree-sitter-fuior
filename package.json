@@ -1,8 +1,8 @@
 {
   "name": "tree-sitter-fuior",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Grammar for Fuior (narrative design DSL)",
-  "main": "index.js",
+  "main": "bindings/node",
   "scripts": {
     "build": "tree-sitter generate && node-gyp build --debug",
     "install": "prebuild-install || node-gyp rebuild",
@@ -27,6 +27,6 @@
   "devDependencies": {
     "node-abi": "^2.19.3",
     "prebuild": "^10.0.1",
-    "tree-sitter-cli": "^0.17.3"
+    "tree-sitter-cli": "^0.19.5"
   }
 }
