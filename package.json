@@ -31,6 +31,9 @@
   },
   "tree-sitter": {
     "scope": "source.fuior",
-    "file_types": [".fui"]
+    "file_types": ["fui"],
+    "highlights": [
+      "queries/highlights.scm"
+    ]
   }
 }
