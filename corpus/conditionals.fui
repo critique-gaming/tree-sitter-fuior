@@ -8,6 +8,7 @@ end
 
 if condition
   verb if_branch
+  return
 else
   verb else_branch
   return 0
@@ -40,7 +41,10 @@ end
   (if_statement
     (condition (identifier))
     (if_clause
-      (block (command (command_verb) (command_arg (bare_word))))
+      (block
+        (command (command_verb) (command_arg (bare_word)))
+        (return_statement)
+      )
     )
     (else_clause
       (block

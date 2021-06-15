@@ -68,7 +68,7 @@ module.exports = grammar({
 
     return_statement: $ => seq(
       'return',
-      field('return_value', alias($._expression, $.return_value)),
+      optional(field('return_value', alias($._expression, $.return_value))),
       $._endl,
     ),
 

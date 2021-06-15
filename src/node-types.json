@@ -800,7 +800,7 @@
     "fields": {
       "return_value": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "return_value",
