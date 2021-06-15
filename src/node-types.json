@@ -265,6 +265,10 @@
           "named": true
         },
         {
+          "type": "choice_meta",
+          "named": true
+        },
+        {
           "type": "text_copy",
           "named": true
         }
@@ -313,6 +317,21 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "choice_meta",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
           "named": true
         }
       ]
@@ -1358,6 +1377,10 @@
   {
     "type": "intl_string",
     "named": true
+  },
+  {
+    "type": "meta",
+    "named": false
   },
   {
     "type": "not",

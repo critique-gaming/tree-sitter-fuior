@@ -11,6 +11,7 @@
 
 (declare_var_statement "var" @keyword)
 (return_statement "return") @keyword
+(choice_meta ["meta" "end"] @keyword)
 
 ;; Operators
 
