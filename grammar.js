@@ -7,7 +7,10 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: $ => repeat($._statement),
+    source_file: $ => seq(
+      repeat($._statement),
+      optional($.return_statement),
+    ),
 
     comment: $ => /\#[^\n]*/,
 
@@ -63,9 +66,16 @@ module.exports = grammar({
     stat_operator: $ => choice('+', '-', '='),
     stat_rvalue: $ => $._expression,
 
+    return_statement: $ => seq(
+      'return',
+      field('return_value', alias($._expression, $.return_value)),
+      $._endl,
+    ),
+
     block: $ => seq(
       $._endl,
       repeat($._statement),
+      optional($.return_statement),
     ),
 
     arg_definition: $ => seq(
