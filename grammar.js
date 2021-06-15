@@ -21,6 +21,7 @@ module.exports = grammar({
       $.show_text,
       $.declare_command_statement,
       $.define_command_statement,
+      $.declare_var_statement,
     ),
 
     if_statement: $ => seq(
@@ -117,6 +118,35 @@ module.exports = grammar({
       $._endl,
     ),
 
+    arg_list: $ => seq('(', optional(seq(
+      $._expression,
+      repeat(seq(
+        ',',
+        $._expression,
+      )),
+    )), ')'),
+
+    declare_var_decorator: $ => seq(
+      '@',
+      field('name', alias($.identifier, $.decorator_name)),
+      optional($.arg_list),
+    ),
+
+    declare_var_statement: $ => seq(
+      'var',
+      field('name', alias($.identifier, $.var_name)),
+      optional(seq(
+        ':',
+        field('type', alias($._type_expression, $.var_type)),
+      )),
+      repeat($.declare_var_decorator),
+      optional(seq(
+        '=',
+        field('default_value', alias($._expression, $.var_default_value))
+      )),
+      $._endl,
+    ),
+
     command: $ => seq(
       field('verb', alias($.identifier, $.command_verb)),
       repeat($.command_arg),
@@ -166,6 +196,7 @@ module.exports = grammar({
 
     _expression: $ => choice(
       $.identifier,
+      $.function_call,
       $._literal,
       $.unary_expression,
       $.binary_expression,
@@ -177,6 +208,11 @@ module.exports = grammar({
       $.intl_string,
       $.string,
       $.boolean,
+    ),
+
+    function_call: $ => seq(
+      field('name', $.identifier),
+      field('arg_list', $.arg_list),
     ),
 
     unary_expression: $ => prec(10, choice(
