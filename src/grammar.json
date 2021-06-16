@@ -50,15 +50,15 @@
         },
         {
           "type": "SYMBOL",
-          "name": "stat_operation"
+          "name": "assign_statement"
         },
         {
           "type": "SYMBOL",
-          "name": "command"
+          "name": "command_statement"
         },
         {
           "type": "SYMBOL",
-          "name": "show_text"
+          "name": "text_statement"
         },
         {
           "type": "SYMBOL",
@@ -280,7 +280,7 @@
       "type": "SYMBOL",
       "name": "_expression"
     },
-    "stat_operation": {
+    "assign_statement": {
       "type": "SEQ",
       "members": [
         {
@@ -293,7 +293,7 @@
               "name": "identifier"
             },
             "named": true,
-            "value": "stat_lvalue"
+            "value": "assign_lvalue"
           }
         },
         {
@@ -301,7 +301,7 @@
           "name": "operator",
           "content": {
             "type": "SYMBOL",
-            "name": "stat_operator"
+            "name": "assign_operator"
           }
         },
         {
@@ -309,12 +309,12 @@
           "name": "rvalue",
           "content": {
             "type": "SYMBOL",
-            "name": "stat_rvalue"
+            "name": "assign_rvalue"
           }
         }
       ]
     },
-    "stat_operator": {
+    "assign_operator": {
       "type": "CHOICE",
       "members": [
         {
@@ -331,7 +331,7 @@
         }
       ]
     },
-    "stat_rvalue": {
+    "assign_rvalue": {
       "type": "SYMBOL",
       "name": "_expression"
     },
@@ -793,7 +793,7 @@
         }
       ]
     },
-    "command": {
+    "command_statement": {
       "type": "SEQ",
       "members": [
         {
@@ -863,7 +863,7 @@
         }
       }
     },
-    "show_text": {
+    "text_statement": {
       "type": "SEQ",
       "members": [
         {
@@ -952,11 +952,24 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "string"
         },
         {
           "type": "SYMBOL",
-          "name": "string"
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "boolean"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "type_identifier"
         },
         {
           "type": "SYMBOL",

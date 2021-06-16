@@ -11,19 +11,19 @@ tab: Hi, Jen!
 
 (source_file
   (comment)
-  (command
+  (command_statement
     (command_verb)
     (command_arg (bare_word))
     (command_arg (bare_word))
     (command_arg (string))
     (command_arg (intl_string))
   )
-  (show_text
+  (text_statement
     (text_actor)
     (text_animation)
     (text_copy)
   )
-  (show_text
+  (text_statement
     (text_actor)
     (text_copy)
   )

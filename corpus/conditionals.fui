@@ -35,20 +35,20 @@ end
   (if_statement
     (condition (identifier))
     (if_clause
-      (block (command (command_verb) (command_arg (bare_word))))
+      (block (command_statement (command_verb) (command_arg (bare_word))))
     )
   )
   (if_statement
     (condition (identifier))
     (if_clause
       (block
-        (command (command_verb) (command_arg (bare_word)))
+        (command_statement (command_verb) (command_arg (bare_word)))
         (return_statement)
       )
     )
     (else_clause
       (block
-        (command (command_verb) (command_arg (bare_word)))
+        (command_statement (command_verb) (command_arg (bare_word)))
         (return_statement (return_value (number)))
       )
     )
@@ -56,24 +56,24 @@ end
   (if_statement
     (condition (identifier))
     (if_clause
-      (block (command (command_verb) (command_arg (bare_word))))
+      (block (command_statement (command_verb) (command_arg (bare_word))))
     )
     (elseif_clause
       (condition (identifier))
-      (block (command (command_verb) (command_arg (bare_word))))
+      (block (command_statement (command_verb) (command_arg (bare_word))))
     )
   )
   (if_statement
     (condition (identifier))
     (if_clause
-      (block (command (command_verb) (command_arg (bare_word))))
+      (block (command_statement (command_verb) (command_arg (bare_word))))
     )
     (elseif_clause
       (condition (identifier))
-      (block (command (command_verb) (command_arg (bare_word))))
+      (block (command_statement (command_verb) (command_arg (bare_word))))
     )
     (else_clause
-      (block (command (command_verb) (command_arg (bare_word))))
+      (block (command_statement (command_verb) (command_arg (bare_word))))
     )
   )
 )

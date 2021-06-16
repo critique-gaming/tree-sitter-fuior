@@ -9,19 +9,19 @@ name = "Manny"
 ---
 
 (source_file
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue (number))
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue (number))
   )
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue (number))
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue (number))
   )
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue (string))
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue (string))
   )
 )

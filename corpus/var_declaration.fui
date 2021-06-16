@@ -1,48 +1,27 @@
 ===
-Command definition
+Variable declaration
 ===
 
-command my_custom_command1(arg1: string, arg2: ?number, arg3: name1 | name2)
-  some_command
-end
+var foo
 
-declare command my_custom_command2(): return_type
+var bar: number
 
-declare command my_custom_command2(arg1)
+var baz: string = "1"
+
+var meow: number @min(0) @max(10, 1) @observable = 0
 
 ---
 
 (source_file
-  (define_command_statement
-    (command_signature
-      (command_name)
-      (arg_definition_list
-        (arg_definition (arg_name)
-          (arg_type (identifier))
-        )
-        (arg_definition (arg_name)
-          (arg_type (unary_type_expression (identifier)))
-        )
-        (arg_definition (arg_name)
-          (arg_type (binary_type_expression (identifier) (identifier)))
-        )
-      )
-    )
-    (block (command (command_verb)))
+  (declare_var_statement (var_name))
+  (declare_var_statement (var_name) (var_type (type_identifier)))
+  (declare_var_statement (var_name) (var_type (type_identifier))
+    (var_default_value (string))
   )
-  (declare_command_statement
-    (command_signature
-      (command_name)
-      (arg_definition_list)
-      (return_type (identifier))
-    )
-  )
-  (declare_command_statement
-    (command_signature
-      (command_name)
-      (arg_definition_list
-        (arg_definition (arg_name))
-      )
-    )
+  (declare_var_statement (var_name) (var_type (type_identifier))
+    (declare_var_decorator (decorator_name) (arg_list (number)))
+    (declare_var_decorator (decorator_name) (arg_list (number) (number)))
+    (declare_var_decorator (decorator_name))
+    (var_default_value (number))
   )
 )

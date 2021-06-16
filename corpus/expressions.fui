@@ -15,44 +15,44 @@ some_stat = f(1, 2)
 ---
 
 (source_file
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (identifier)))
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (number)))
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (number)))
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (boolean)))
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (boolean)))
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (binary_expression
         (number)
         (binary_expression
           (number)
           (number)))))
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (binary_expression
         (binary_expression
           (binary_expression
@@ -66,20 +66,20 @@ some_stat = f(1, 2)
         (binary_expression
           (identifier)
           (number)))))
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (binary_expression
         (paran_expression
           (binary_expression
             (number)
             (number)))
         (number))))
-  (stat_operation
-    (stat_lvalue)
-    (stat_operator)
-    (stat_rvalue
+  (assign_statement
+    (assign_lvalue)
+    (assign_operator)
+    (assign_rvalue
       (function_call
         (identifier)
         (arg_list

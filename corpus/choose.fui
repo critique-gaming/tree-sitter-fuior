@@ -41,18 +41,18 @@ end
     (choice
       (text_copy)
       (block
-        (show_text (text_actor) (text_copy))))
+        (text_statement (text_actor) (text_copy))))
     (choice
       (text_copy)
       (block
-        (show_text (text_actor) (text_copy))))
+        (text_statement (text_actor) (text_copy))))
     (choice
       (text_copy)
       (choice_meta
-        (block (command (command_verb)))
+        (block (command_statement (command_verb)))
       )
       (block
-        (show_text (text_actor) (text_copy))))
+        (text_statement (text_actor) (text_copy))))
   )
   (choose_statement
     (choice (choice_condition (binary_expression (identifier) (number))) (text_copy) (block))

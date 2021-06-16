@@ -19,9 +19,9 @@ module.exports = grammar({
       $._endl,
       $.if_statement,
       $.choose_statement,
-      $.stat_operation,
-      $.command,
-      $.show_text,
+      $.assign_statement,
+      $.command_statement,
+      $.text_statement,
       $.declare_command_statement,
       $.define_command_statement,
       $.declare_var_statement,
@@ -60,13 +60,13 @@ module.exports = grammar({
     choice_meta: $ => seq("meta", $.block, "end"),
     choice_condition: $ => $._expression,
 
-    stat_operation: $ => seq(
-      field('lvalue', alias($.identifier, $.stat_lvalue)),
-      field('operator', $.stat_operator),
-      field('rvalue', $.stat_rvalue),
+    assign_statement: $ => seq(
+      field('lvalue', alias($.identifier, $.assign_lvalue)),
+      field('operator', $.assign_operator),
+      field('rvalue', $.assign_rvalue),
     ),
-    stat_operator: $ => choice('+', '-', '='),
-    stat_rvalue: $ => $._expression,
+    assign_operator: $ => choice('+', '-', '='),
+    assign_rvalue: $ => $._expression,
 
     return_statement: $ => seq(
       'return',
@@ -159,7 +159,7 @@ module.exports = grammar({
       $._endl,
     ),
 
-    command: $ => seq(
+    command_statement: $ => seq(
       field('verb', alias($.identifier, $.command_verb)),
       repeat($.command_arg),
       $._endl,
@@ -171,7 +171,7 @@ module.exports = grammar({
     ),
     bare_word: $ => token(prec(-1, /[^\s]+/)),
 
-    show_text: $ => seq(
+    text_statement: $ => seq(
       field('actor', alias($.identifier, $.text_actor)),
       ':',
       choice(
@@ -188,8 +188,10 @@ module.exports = grammar({
     text_copy: $ => /[^\r\n\s][^\r\n]*[^\r\n\s]|[^\r\n\s]/,
 
     _type_expression: $ => choice(
-      $.identifier,
       $.string,
+      $.number,
+      $.boolean,
+      alias($.identifier, $.type_identifier),
       $.binary_type_expression,
       $.unary_type_expression,
       $.paran_type_expression,

@@ -100,7 +100,11 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -112,10 +116,102 @@
           "named": true
         },
         {
+          "type": "type_identifier",
+          "named": true
+        },
+        {
           "type": "unary_type_expression",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "assign_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "assign_rvalue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "intl_string",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "paran_expression",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assign_statement",
+    "named": true,
+    "fields": {
+      "lvalue": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assign_lvalue",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assign_operator",
+            "named": true
+          }
+        ]
+      },
+      "rvalue": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assign_rvalue",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -178,7 +274,11 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -187,6 +287,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         },
         {
@@ -205,11 +309,15 @@
       "required": false,
       "types": [
         {
+          "type": "assign_statement",
+          "named": true
+        },
+        {
           "type": "choose_statement",
           "named": true
         },
         {
-          "type": "command",
+          "type": "command_statement",
           "named": true
         },
         {
@@ -233,11 +341,7 @@
           "named": true
         },
         {
-          "type": "show_text",
-          "named": true
-        },
-        {
-          "type": "stat_operation",
+          "type": "text_statement",
           "named": true
         }
       ]
@@ -353,32 +457,6 @@
     }
   },
   {
-    "type": "command",
-    "named": true,
-    "fields": {
-      "verb": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "command_verb",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "command_arg",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "command_arg",
     "named": true,
     "fields": {},
@@ -463,6 +541,32 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "command_statement",
+    "named": true,
+    "fields": {
+      "verb": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "command_verb",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "command_arg",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -795,7 +899,11 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -804,6 +912,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         },
         {
@@ -842,7 +954,11 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -851,6 +967,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         },
         {
@@ -908,7 +1028,54 @@
     }
   },
   {
-    "type": "show_text",
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assign_statement",
+          "named": true
+        },
+        {
+          "type": "choose_statement",
+          "named": true
+        },
+        {
+          "type": "command_statement",
+          "named": true
+        },
+        {
+          "type": "declare_command_statement",
+          "named": true
+        },
+        {
+          "type": "declare_var_statement",
+          "named": true
+        },
+        {
+          "type": "define_command_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "text_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "text_statement",
     "named": true,
     "fields": {
       "actor": {
@@ -941,141 +1108,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "source_file",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "choose_statement",
-          "named": true
-        },
-        {
-          "type": "command",
-          "named": true
-        },
-        {
-          "type": "declare_command_statement",
-          "named": true
-        },
-        {
-          "type": "declare_var_statement",
-          "named": true
-        },
-        {
-          "type": "define_command_statement",
-          "named": true
-        },
-        {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "return_statement",
-          "named": true
-        },
-        {
-          "type": "show_text",
-          "named": true
-        },
-        {
-          "type": "stat_operation",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "stat_operation",
-    "named": true,
-    "fields": {
-      "lvalue": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "stat_lvalue",
-            "named": true
-          }
-        ]
-      },
-      "operator": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "stat_operator",
-            "named": true
-          }
-        ]
-      },
-      "rvalue": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "stat_rvalue",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "stat_operator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "stat_rvalue",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "intl_string",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "paran_expression",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -1138,7 +1170,11 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -1147,6 +1183,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         },
         {
@@ -1216,7 +1256,11 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -1225,6 +1269,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         },
         {
@@ -1319,6 +1367,10 @@
     "named": true
   },
   {
+    "type": "assign_lvalue",
+    "named": true
+  },
+  {
     "type": "bare_word",
     "named": true
   },
@@ -1399,10 +1451,6 @@
     "named": false
   },
   {
-    "type": "stat_lvalue",
-    "named": true
-  },
-  {
     "type": "string",
     "named": true
   },
@@ -1421,6 +1469,10 @@
   {
     "type": "true",
     "named": false
+  },
+  {
+    "type": "type_identifier",
+    "named": true
   },
   {
     "type": "var",
