@@ -51,13 +51,18 @@ module.exports = grammar({
     choice: $ => seq(
       '*',
       choice(
-        seq(token(prec(2, '[')), $.choice_condition, ']', $.text_copy),
-        $.text_copy,
+        seq(
+          token(prec(2, '[')), 
+          field('condition', $.choice_condition), 
+          ']', 
+          field('copy', $.text_copy)
+        ),
+        field('copy', $.text_copy),
       ),
-      optional(seq($._endl, $.choice_meta)),
+      optional(seq($._endl, field('meta', $.choice_meta))),
       $.block,
     ),
-    choice_meta: $ => seq("meta", $.block, "end"),
+    choice_meta: $ => seq('meta', field('block', $.block), 'end'),
     choice_condition: $ => $._expression,
 
     assign_statement: $ => seq(
@@ -80,6 +85,16 @@ module.exports = grammar({
       optional($.return_statement),
     ),
 
+    vararg_definition: $ => seq(
+      '...',
+      optional(
+        seq(
+          ':',
+          field('type', alias($._type_expression, $.arg_type)),
+        ),
+      ),
+    ),
+
     arg_definition: $ => seq(
       field('name', alias($.identifier, $.arg_name)),
       optional(
@@ -92,18 +107,17 @@ module.exports = grammar({
 
     arg_definition_list: $ => seq(
       '(',
-      choice(
-        ')',
-        seq($.arg_definition,
-          choice(
-            ')',
-            seq(
-              repeat(seq(',', $.arg_definition)),
-              ')'
-            ),
+      optional(
+        choice(
+          field('vararg', $.vararg_definition),
+          seq(
+            $.arg_definition,
+            repeat(seq(',', $.arg_definition)),
+            optional(seq(',', field('vararg', $.vararg_definition))),
           ),
         ),
       ),
+      ')',
     ),
 
     command_signature: $ => seq(
@@ -141,7 +155,7 @@ module.exports = grammar({
     declare_var_decorator: $ => seq(
       '@',
       field('name', alias($.identifier, $.decorator_name)),
-      optional($.arg_list),
+      optional(field('arg_list', $.arg_list)),
     ),
 
     declare_var_statement: $ => seq(

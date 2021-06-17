@@ -2,13 +2,21 @@
 Command definition
 ===
 
-command my_custom_command1(arg1: string, arg2: ?number, arg3: name1 | name2)
+command cmd1(arg1: string, arg2: ?number, arg3: name1 | name2)
   some_command
 end
 
-declare command my_custom_command2(): return_type
+declare command cmd2(): return_type
 
-declare command my_custom_command2(arg1)
+declare command cmd3(arg1)
+
+declare command cmd4(...)
+
+declare command cmd5(arg1, ...)
+
+declare command cmd5(...: any)
+
+declare command cmd6(arg1, ...: string)
 
 ---
 
@@ -42,6 +50,40 @@ declare command my_custom_command2(arg1)
       (command_name)
       (arg_definition_list
         (arg_definition (arg_name))
+      )
+    )
+  )
+  (declare_command_statement
+    (command_signature
+      (command_name)
+      (arg_definition_list
+        (vararg_definition)
+      )
+    )
+  )
+  (declare_command_statement
+    (command_signature
+      (command_name)
+      (arg_definition_list
+        (arg_definition (arg_name))
+        (vararg_definition)
+      )
+    )
+  )
+  (declare_command_statement
+    (command_signature
+      (command_name)
+      (arg_definition_list
+        (vararg_definition (arg_type (type_identifier)))
+      )
+    )
+  )
+  (declare_command_statement
+    (command_signature
+      (command_name)
+      (arg_definition_list
+        (arg_definition (arg_name))
+        (vararg_definition (arg_type (type_identifier)))
       )
     )
   )

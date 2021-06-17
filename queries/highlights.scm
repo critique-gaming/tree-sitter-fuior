@@ -64,10 +64,9 @@
 
 ;; Functions
 (command_signature (command_name) @function)
-[
-  (declare_command_statement ["declare" "command"])
-  (define_command_statement "command")
-] @keyword.function
+(declare_command_statement ["declare" "command"] @keyword.function)
+(define_command_statement "command" @keyword.function)
+(define_command_statement "end" @keyword)
 
 (function_call (identifier) @function . (arg_list))
 
