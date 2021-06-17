@@ -199,7 +199,25 @@ module.exports = grammar({
       ),
       $._endl
     ),
-    text_copy: $ => /[^\r\n\s][^\r\n]*[^\r\n\s]|[^\r\n\s]/,
+    string_interpolation: $ => seq('${', field('value', $._expression), '}'),
+    _string_interpolation_immediate: $ => seq(token.immediate('${'), field('value', $._expression), '}'),
+    text_copy: $ => seq(
+      choice(
+        $.string_interpolation,
+        /[^$\r\n\s]+/,
+        '$',
+      ),
+      repeat(
+        seq(
+          optional(token.immediate(/[ \t\r\f\v]+/)),
+          choice(
+            alias($._string_interpolation_immediate, $.string_interpolation),
+            token.immediate(/[^$\r\n\s]+/),
+            token.immediate('$'),
+          ),
+        )
+      ),
+    ),
 
     _type_expression: $ => choice(
       $.string,
@@ -267,8 +285,17 @@ module.exports = grammar({
 
     identifier: $ => /[a-z_][a-z0-9_]*/,
     number: $ => /[0-9]+(\.[0-9]+)?/,
-    intl_string: $ => /i"[^"]*"/,
     string: $ => /"[^"]*"/,
     boolean: $ => choice('true', 'false'),
+
+    intl_string: $ => seq(
+      'i"',
+      repeat(choice(
+        alias($._string_interpolation_immediate, $.string_interpolation),
+        token.immediate(/[^"$]+/),
+        token.immediate('$'),
+      )),
+      '"',
+    ),
   }
 });

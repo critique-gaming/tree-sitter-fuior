@@ -1029,9 +1029,123 @@
         }
       ]
     },
+    "string_interpolation": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "${"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_string_interpolation_immediate": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "${"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "text_copy": {
-      "type": "PATTERN",
-      "value": "[^\\r\\n\\s][^\\r\\n]*[^\\r\\n\\s]|[^\\r\\n\\s]"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "string_interpolation"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^$\\r\\n\\s]+"
+            },
+            {
+              "type": "STRING",
+              "value": "$"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "[ \\t\\r\\f\\v]+"
+                    }
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_string_interpolation_immediate"
+                    },
+                    "named": true,
+                    "value": "string_interpolation"
+                  },
+                  {
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "[^$\\r\\n\\s]+"
+                    }
+                  },
+                  {
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "STRING",
+                      "value": "$"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
     },
     "_type_expression": {
       "type": "CHOICE",
@@ -1545,10 +1659,6 @@
       "type": "PATTERN",
       "value": "[0-9]+(\\.[0-9]+)?"
     },
-    "intl_string": {
-      "type": "PATTERN",
-      "value": "i\"[^\"]*\""
-    },
     "string": {
       "type": "PATTERN",
       "value": "\"[^\"]*\""
@@ -1563,6 +1673,50 @@
         {
           "type": "STRING",
           "value": "false"
+        }
+      ]
+    },
+    "intl_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "i\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_string_interpolation_immediate"
+                },
+                "named": true,
+                "value": "string_interpolation"
+              },
+              {
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^\"$]+"
+                }
+              },
+              {
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "STRING",
+                  "value": "$"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\""
         }
       ]
     }

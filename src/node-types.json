@@ -871,6 +871,21 @@
     }
   },
   {
+    "type": "intl_string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "string_interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "paran_expression",
     "named": true,
     "fields": {},
@@ -1106,6 +1121,69 @@
     }
   },
   {
+    "type": "string_interpolation",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "intl_string",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "paran_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "text_copy",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "string_interpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "text_statement",
     "named": true,
     "fields": {
@@ -1334,6 +1412,18 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "$",
+    "named": false
+  },
+  {
+    "type": "${",
+    "named": false
+  },
+  {
     "type": "&",
     "named": false
   },
@@ -1470,16 +1560,16 @@
     "named": false
   },
   {
+    "type": "i\"",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
   {
     "type": "if",
     "named": false
-  },
-  {
-    "type": "intl_string",
-    "named": true
   },
   {
     "type": "meta",
@@ -1511,10 +1601,6 @@
   },
   {
     "type": "text_animation",
-    "named": true
-  },
-  {
-    "type": "text_copy",
     "named": true
   },
   {
