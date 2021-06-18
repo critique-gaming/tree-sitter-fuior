@@ -87,5 +87,11 @@
 (text_statement (text_animation) @variable)
 (text_copy) @string
 
+(escape_sequence) @punctuation.special
+
+(string_interpolation
+  "${" @punctuation.special
+  "}" @punctuation.special) @none
+
 ;; Error
 (ERROR) @error
