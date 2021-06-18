@@ -3,12 +3,9 @@ Basic syntax
 ===
 
 # This is a comment. It's going to be ignored
-show jen LEFT "Jennifer Reyes" i"Intled ${name} string"
+show jen LEFT "Jennifer Reyes" i"Intled string"
 jen: [smile] Hi, Tab!
 tab: Hi, Jen!
-jen: ${name}
-jen: Hello ${name} and ${name}!
-jen: ${name}, are you ok?
 
 ---
 
@@ -19,9 +16,7 @@ jen: ${name}, are you ok?
     (command_arg (bare_word))
     (command_arg (bare_word))
     (command_arg (string))
-    (command_arg (intl_string
-      (string_interpolation (identifier))
-    ))
+    (command_arg (intl_string))
   )
   (text_statement
     (text_actor)
@@ -31,21 +26,6 @@ jen: ${name}, are you ok?
   (text_statement
     (text_actor)
     (text_copy)
-  )
-  (text_statement
-    (text_actor)
-    (text_copy (string_interpolation (identifier)))
-  )
-  (text_statement
-    (text_actor)
-    (text_copy
-      (string_interpolation (identifier))
-      (string_interpolation (identifier))
-    )
-  )
-  (text_statement
-    (text_actor)
-    (text_copy (string_interpolation (identifier)))
   )
 )
 

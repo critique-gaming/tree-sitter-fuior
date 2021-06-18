@@ -270,8 +270,19 @@ module.exports = grammar({
 
     identifier: ($) => /[a-z_][a-z0-9_]*/,
     number: ($) => /[0-9]+(\.[0-9]+)?/,
-    string: ($) => /"[^"]*"/,
     boolean: ($) => choice("true", "false"),
+
+    escape_sequence: ($) =>
+      token.immediate(
+        /\\([0-7][0-7]?[0-7]?|x[0-9a-fA-F][0-9a-fA-F]|[abefnrtv'"?\\])/
+      ),
+
+    string: ($) =>
+      seq(
+        '"',
+        repeat(choice($.escape_sequence, token.immediate(/[^"\\]+/))),
+        token.immediate('"')
+      ),
 
     intl_string: ($) =>
       seq(
@@ -279,11 +290,12 @@ module.exports = grammar({
         repeat(
           choice(
             alias($._string_interpolation_immediate, $.string_interpolation),
-            token.immediate(/[^"$]+/),
+            $.escape_sequence,
+            token.immediate(/[^"$\\]+/),
             token.immediate("$")
           )
         ),
-        '"'
+        token.immediate('"')
       ),
   },
 });

@@ -1659,10 +1659,6 @@
       "type": "PATTERN",
       "value": "[0-9]+(\\.[0-9]+)?"
     },
-    "string": {
-      "type": "PATTERN",
-      "value": "\"[^\"]*\""
-    },
     "boolean": {
       "type": "CHOICE",
       "members": [
@@ -1673,6 +1669,48 @@
         {
           "type": "STRING",
           "value": "false"
+        }
+      ]
+    },
+    "escape_sequence": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\\\([0-7][0-7]?[0-7]?|x[0-9a-fA-F][0-9a-fA-F]|[abefnrtv'\"?\\\\])"
+      }
+    },
+    "string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              },
+              {
+                "type": "IMMEDIATE_TOKEN",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^\"\\\\]+"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "\""
+          }
         }
       ]
     },
@@ -1698,10 +1736,14 @@
                 "value": "string_interpolation"
               },
               {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              },
+              {
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[^\"$]+"
+                  "value": "[^\"$\\\\]+"
                 }
               },
               {
@@ -1715,8 +1757,11 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "\""
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "\""
+          }
         }
       ]
     }

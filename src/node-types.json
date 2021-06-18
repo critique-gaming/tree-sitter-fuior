@@ -879,6 +879,10 @@
       "required": false,
       "types": [
         {
+          "type": "escape_sequence",
+          "named": true
+        },
+        {
           "type": "string_interpolation",
           "named": true
         }
@@ -1115,6 +1119,21 @@
         },
         {
           "type": "text_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
           "named": true
         }
       ]
@@ -1556,6 +1575,10 @@
     "named": false
   },
   {
+    "type": "escape_sequence",
+    "named": true
+  },
+  {
     "type": "false",
     "named": false
   },
@@ -1590,10 +1613,6 @@
   {
     "type": "return",
     "named": false
-  },
-  {
-    "type": "string",
-    "named": true
   },
   {
     "type": "text_actor",

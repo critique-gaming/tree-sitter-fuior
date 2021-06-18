@@ -1,0 +1,56 @@
+===
+Strings
+===
+
+# This is a comment. It's going to be ignored
+show "Jennifer\nReyes" i"Intled ${name} string \xAF \xaf \\ \0"
+show "This should be an\ error"
+jen: ${name}
+jen: Hello ${name} a$nd ${name}!
+jen: ${name}, are you ok?
+jen: Don't mind me, ${name}
+
+---
+
+(source_file
+  (comment)
+  (command_statement
+    (command_verb)
+    (command_arg (string
+      (escape_sequence)
+    ))
+    (command_arg (intl_string
+      (string_interpolation (identifier))
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence)
+    ))
+  )
+  (command_statement
+    (command_verb)
+    (command_arg (string
+      (ERROR (UNEXPECTED ' ') (identifier))
+    ))
+  )
+  (text_statement
+    (text_actor)
+    (text_copy (string_interpolation (identifier)))
+  )
+  (text_statement
+    (text_actor)
+    (text_copy
+      (string_interpolation (identifier))
+      (string_interpolation (identifier))
+    )
+  )
+  (text_statement
+    (text_actor)
+    (text_copy (string_interpolation (identifier)))
+  )
+  (text_statement
+    (text_actor)
+    (text_copy (string_interpolation (identifier)))
+  )
+)
+
