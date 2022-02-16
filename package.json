@@ -4,10 +4,9 @@
   "description": "Grammar for Fuior (narrative design DSL)",
   "main": "bindings/node",
   "scripts": {
-    "build": "tree-sitter generate && node-gyp build --debug",
-    "install": "prebuild-install || node-gyp rebuild",
-    "prebuild": "prebuild -r electron --strip -t 6.1.12 -t 7.3.3 -t 8.5.5 -t 9.3.4 -t 10.1.6 -t 11.0.2 --strip && prebuild --strip -t 10.23.0 -t 12.19.1 -t 14.15.1 -t 15.2.1",
-    "prebuild:upload": "prebuild --upload-all",
+    "generate": "tree-sitter generate",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --strip --all -x node@5.0.0 -x node@6.0.0 -x electron@0.36.0 -x electron@1.1.0 -x electron@1.3.0 -x electron@1.4.0 -x node@17.0.0 && prebuildify --strip -t node@17.0.1",
     "test": "tree-sitter test"
   },
   "repository": {
@@ -22,11 +21,10 @@
   "homepage": "https://github.com/critique-gaming/tree-sitter-fuior#readme",
   "dependencies": {
     "nan": "^2.15.0",
-    "prebuild-install": "^7.0.1"
+    "node-gyp-build": "^4.3.0"
   },
   "devDependencies": {
-    "node-abi": "^3.8.0",
-    "prebuild": "^11.0.3",
+    "prebuildify": "github:dapetcu21/prebuildify",
     "tree-sitter-cli": "^0.19.5"
   },
   "tree-sitter": {
