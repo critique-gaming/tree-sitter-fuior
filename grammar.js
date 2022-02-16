@@ -215,6 +215,7 @@ module.exports = grammar({
         $.string,
         $.number,
         $.boolean,
+        $.nil,
         alias($.identifier, $.type_identifier),
         $.binary_type_expression,
         $.unary_type_expression,
@@ -242,7 +243,7 @@ module.exports = grammar({
         $.paran_expression
       ),
 
-    _literal: ($) => choice($.number, $.intl_string, $.string, $.boolean),
+    _literal: ($) => choice($.number, $.intl_string, $.string, $.boolean, $.nil),
 
     function_call: ($) =>
       seq(field("name", $.identifier), field("arg_list", $.arg_list)),
@@ -270,6 +271,7 @@ module.exports = grammar({
 
     identifier: ($) => /[a-z_][a-z0-9_]*/,
     number: ($) => /[0-9]+(\.[0-9]+)?/,
+    nil: ($) => "nil",
     boolean: ($) => choice("true", "false"),
 
     escape_sequence: ($) =>
