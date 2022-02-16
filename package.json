@@ -21,17 +21,19 @@
   },
   "homepage": "https://github.com/critique-gaming/tree-sitter-fuior#readme",
   "dependencies": {
-    "nan": "^2.14.2",
-    "prebuild-install": "^6.0.0"
+    "nan": "^2.15.0",
+    "prebuild-install": "^7.0.1"
   },
   "devDependencies": {
-    "node-abi": "^2.19.3",
-    "prebuild": "^10.0.1",
+    "node-abi": "^3.8.0",
+    "prebuild": "^11.0.3",
     "tree-sitter-cli": "^0.19.5"
   },
   "tree-sitter": {
     "scope": "source.fuior",
-    "file_types": ["fui"],
+    "file_types": [
+      "fui"
+    ],
     "highlights": [
       "queries/highlights.scm"
     ]
